@@ -1,0 +1,18 @@
+from androidhelper import sl4a
+droid = sl4a.Android()
+import time
+dt = 10 #100ms between sensings
+droid.startSensingTimed(2,dt) 
+n = 0
+m = 0
+while(True):
+    var = droid.sensorsReadAccelerometer().result
+    m+=1
+    if var[2] is not None and var[2] == 9.9375:       
+        n+=1
+        if m > 10:
+            m = 0
+            print(n)
+            if n == 11:
+                droid.mediaPlay("/storage/emulated/0/qpython/scripts3/beep.mp3")
+            n = 0
