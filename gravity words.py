@@ -22,6 +22,10 @@ def gather(file):
         text = f.read()
     return text.split(" ")
 data = gather("/storage/emulated/0/qpython/scripts3/xbt")
+
+f = open("/storage/emulated/0/qpython/scripts3/log.txt","a", encoding="utf8")
+f.write("\n\n")
+f.close()
 while(True):
     var = droid.sensorsReadAccelerometer().result
     m+=1
@@ -30,7 +34,11 @@ while(True):
         if m > 10:
             m = 0
             print(n)
-            if n >= 9:   
-                print(getRandNGram(data))
-                droid.mediaPlay("/storage/emulated/0/qpython/scripts3/beep.mp3")
+            if n >= 11:   
+                var = getRandNGram(data)
+                print (var)
+                #droid.mediaPlay("/storage/emulated/0/qpython/scripts3/beep.mp3")
+                f = open("/storage/emulated/0/qpython/scripts3/log.txt","a", encoding="utf8")
+                f.write(var + " ")
+                f.close()
             n = 0
