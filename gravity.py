@@ -18,7 +18,7 @@ while(True):
     m+=1
     if var[2] is not None and var[2] == 9.9375:       
         n+=1
-        if m >= 10:
+        if m > 10:
             m = 0
             print(n)
             if n >= 11:
